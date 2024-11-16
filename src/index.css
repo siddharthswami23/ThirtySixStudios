@@ -10,6 +10,7 @@
 
 html,body{
   width: 100%;
+  transition: all cubic-bezier(0.23, 1, 0.32, 1) 1s;
 }
 
 
@@ -25,4 +26,8 @@ body::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 10px;
   border: 2px solid #f1f1f1;
+}
+
+span.growing {
+  background-color: #fd2c2a;
 }

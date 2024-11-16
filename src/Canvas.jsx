@@ -49,7 +49,7 @@ function Canvas({ details }) {
       data-scroll
       data-scroll-speed={Math.random().toFixed(1)}
       ref={canvasRef}
-      className="absolute"
+      className="absolute z-[1000]"
       style={{
         width: `${size * 1.8}px`,
         height: `${size * 1.8}px`,

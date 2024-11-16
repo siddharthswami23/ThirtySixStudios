@@ -5,6 +5,7 @@ import LocomotiveScroll from "locomotive-scroll";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 const App = () => {
+  const headingRef = useRef(null);
   const hoverDivRef = useRef(null);
   const growingSpan = useRef(null);
 
@@ -32,6 +33,42 @@ const App = () => {
   useEffect(() => {
     const locomotiveScroll = new LocomotiveScroll();
   }, []);
+
+  useEffect(() => {
+    const heading = headingRef.current;
+
+    const onHeadingClick = (e) => {
+      setShowCanvas((val) => !val);
+
+      if (!ShowCanvas) {
+        gsap.set(growingSpan.current, {
+          top: e.clientY,
+          left: e.clientX,
+          scale: 0,
+        });
+
+        gsap.to(growingSpan.current, {
+          scale: 1000,
+          duration: 1,
+          ease: "power2.inOut",
+        });
+      }
+    };
+
+    heading.addEventListener("click", onHeadingClick);
+    return () => heading.removeEventListener("click", onHeadingClick);
+  }, [ShowCanvas]);
+
+  useEffect(() => {
+    if (!ShowCanvas) {
+      gsap.to(growingSpan.current, {
+        scale: 0,
+        duration: 1,
+        ease: "power2.inOut",
+      });
+    }
+  }, [ShowCanvas]);
+
   return (
     <div className="w-full bg-black">
       <span
@@ -72,19 +109,19 @@ const App = () => {
         </div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <h1
+            ref={headingRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            onClick={() => {
-              setShowCanvas((val) => !val);
-            }}
-            className="text-white cursor-none relative text-[10vw] font-bold uppercase tracking-tighter whitespace-nowrap text-center "
+            className="text-white cursor-none leading-9 relative text-[10vw] font-bold uppercase tracking-tighter whitespace-nowrap text-center "
           >
             ThirtySixStudios
           </h1>
           <div
             ref={hoverDivRef}
             id="hover-div"
-            className="w-20 scale-0 aspect-square opacity-0 bg-red-500 rounded-full"
+            className={`w-20 scale-0 aspect-square opacity-0 rounded-full ${
+              ShowCanvas ? "bg-[#D7B21A]" : "bg-red-500"
+            }`}
           ></div>
           <p className="text-white text-[1vw] capitalize font-bold text-center ">
             click here to see something new
