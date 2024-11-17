@@ -9,7 +9,7 @@ Currently, two official plugins are available:
 
 # ThirtySix Studios
 
-Welcome to **ThirtySix Studios**, a web application hosted at [thirtysixstudiosbysid.vercel.app](https://thirtysixstudiosbysid.vercel.app).
+Welcome to **ThirtySix Studios**, a web application hosted at [visit he website](https://thirtysixstudiosbysid.vercel.app).
 
 ## Table of Contents
 
