@@ -41,4 +41,4 @@ ThirtySix Studios is a creative platform showcasing immersive web experiences. T
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/thirtysixstudios.git
+   git clone https://github.com/siddharthswami23/thirtysixstudios.git
